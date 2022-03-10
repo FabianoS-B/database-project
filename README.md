@@ -1,2 +1,1 @@
-# database-project
-Project for term 3 first year creating a restaurant order system.
+# Someren starting project for InHolland project 'Databases'
