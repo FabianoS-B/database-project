@@ -40,9 +40,9 @@ namespace SomerenUI
             else if (panelName == "Students")
             {
                 // hide all other panels
-                pnlDashboard.Hide();
-                imgDashboard.Hide();
-                pnlLecturers.Hide();
+                //pnlDashboard.Hide();
+                //imgDashboard.Hide();
+                // pnlLecturers.Hide();
                 
 
                 // show students
@@ -71,9 +71,9 @@ namespace SomerenUI
             else if (panelName == "Lecturers")
             {
                 // hide all other panels
-                pnlDashboard.Hide();
-                imgDashboard.Hide();
-                // pnlStudents.Hide();
+                //pnlDashboard.Hide();
+                //imgDashboard.Hide();
+                pnlStudents.Hide();
 
 
                 // show students
