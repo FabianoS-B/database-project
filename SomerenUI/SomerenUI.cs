@@ -32,17 +32,14 @@ namespace SomerenUI
                 // hide all other panels
                 pnlLecturers.Hide();
                 pnlStudents.Hide();
-
-                // show dashboard
-                pnlDashboard.Show();
+                
                 imgDashboard.Show();
             }
             else if (panelName == "Students")
             {
                 // hide all other panels
-                //pnlDashboard.Hide();
-                //imgDashboard.Hide();
-                // pnlLecturers.Hide();
+
+                pnlLecturers.Hide();
                 
 
                 // show students
@@ -71,8 +68,6 @@ namespace SomerenUI
             else if (panelName == "Lecturers")
             {
                 // hide all other panels
-                //pnlDashboard.Hide();
-                //imgDashboard.Hide();
                 pnlStudents.Hide();
 
 
@@ -86,12 +81,12 @@ namespace SomerenUI
                     List<Lecturer> lecturerList = lectService.GetLecturers(); ;
 
                     // clear the listview before filling it again
-                    // listViewLecturers.Clear();
+                    listViewLecturers.Clear();
 
                     foreach (Lecturer s in lecturerList)
                     {
                         ListViewItem li = new ListViewItem(s.Name);
-                        // listViewLecturers.Items.Add(li);
+                        listViewLecturers.Items.Add(li);
                     }
                 }
                 catch (Exception e)
