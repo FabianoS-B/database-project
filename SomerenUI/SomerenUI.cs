@@ -73,7 +73,7 @@ namespace SomerenUI
                 // hide all other panels
                 pnlDashboard.Hide();
                 imgDashboard.Hide();
-                pnlStudents.Hide();
+                // pnlStudents.Hide();
 
 
                 // show students
@@ -86,12 +86,12 @@ namespace SomerenUI
                     List<Lecturer> lecturerList = lectService.GetLecturers(); ;
 
                     // clear the listview before filling it again
-                    listViewLecturers.Clear();
+                    // listViewLecturers.Clear();
 
                     foreach (Lecturer s in lecturerList)
                     {
                         ListViewItem li = new ListViewItem(s.Name);
-                        listViewLecturers.Items.Add(li);
+                        // listViewLecturers.Items.Add(li);
                     }
                 }
                 catch (Exception e)
