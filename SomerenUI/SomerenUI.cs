@@ -31,6 +31,7 @@ namespace SomerenUI
             {
                 // hide all other panels
                 pnlStudents.Hide();
+                pnlLecturers.Hide();
 
                 // show dashboard
                 pnlDashboard.Show();
@@ -41,6 +42,7 @@ namespace SomerenUI
                 // hide all other panels
                 pnlDashboard.Hide();
                 imgDashboard.Hide();
+                pnlLecturers.Hide();
 
                 // show students
                 pnlStudents.Show();
@@ -73,6 +75,34 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the students: " + e.Message);
                 }
             }
+            else if (panelName == "Lecturers")
+            {
+                // hide all other panels
+                pnlDashboard.Hide();
+                pnlStudents.Hide();
+                // show students
+                pnlLecturers.Show();
+
+                try
+                {
+                    // fill the lecturers listview within the lecturers panel with a list of lecturers
+                    LecturerService lectService = new LecturerService(); ;
+                    List<Lecturer> lecturerList = lectService.GetLecturers(); ;
+
+                    // clear the listview before filling it again
+                    listViewLecturers.Clear();
+
+                    foreach (Lecturer s in lecturerList)
+                    {
+                        ListViewItem li = new ListViewItem(s.Name);
+                        listViewLecturers.Items.Add(li);
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the lecturers: " + e.Message);
+                }
+            }
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -103,6 +133,11 @@ namespace SomerenUI
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Students");
+        }
+
+        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Lecturers");
         }
 
         private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
