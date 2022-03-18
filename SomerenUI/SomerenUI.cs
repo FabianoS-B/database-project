@@ -32,6 +32,7 @@ namespace SomerenUI
                 // hide all other panels
                 pnlStudents.Hide();
                 pnlLecturers.Hide();
+                pnlDrinks.Hide();
 
                 // show dashboard
                 pnlDashboard.Show();
@@ -66,8 +67,7 @@ namespace SomerenUI
                     {
                         string[] row = { s.StudentID.ToString(), s.Name ,s.BirthDate.ToShortDateString(),s.RoomID.ToString()};
                         ListViewItem li = new ListViewItem(row);
-                        listViewStudents.Items.Add(li);
-                        
+                        listViewStudents.Items.Add(li);                        
                     }
                 }
                 catch (Exception e)
@@ -92,16 +92,60 @@ namespace SomerenUI
 
                     // clear the listview before filling it again
                     listViewLecturers.Clear();
+                    listViewLecturers.View = View.Details;
+                    listViewLecturers.FullRowSelect = true;
+                    listViewLecturers.Columns.Add("TeacherID");
+                    listViewLecturers.Columns.Add("Name");
+                    listViewLecturers.Columns.Add("RoomID");
 
                     foreach (Lecturer s in lecturerList)
                     {
-                        ListViewItem li = new ListViewItem(s.Name);
+                        string[] row = { s.TeacherID.ToString(), s.Name, s.RoomID.ToString() };
+                        ListViewItem li = new ListViewItem(row);
                         listViewLecturers.Items.Add(li);
                     }
                 }
                 catch (Exception e)
                 {
                     MessageBox.Show("Something went wrong while loading the lecturers: " + e.Message);
+                }
+            }
+            else if (panelName == "Drinks")
+            {
+                // hide all other panels
+                pnlDashboard.Hide();
+                pnlStudents.Hide();
+                pnlLecturers.Hide();
+                // show students
+                pnlDrinks.Show();
+
+                try
+                {
+                    // fill the lecturers listview within the lecturers panel with a list of lecturers
+                    DrinksService drinkService = new DrinksService(); ;
+                    List<Drink> drinksList = drinkService.GetDrinks(); ;
+
+                    // clear the listview before filling it again
+                    listViewDrinks.Clear();
+                    listViewDrinks.View = View.Details;
+                    listViewDrinks.FullRowSelect = true;
+                    listViewDrinks.Columns.Add("DrinkID");
+                    listViewDrinks.Columns.Add("Name");
+                    listViewDrinks.Columns.Add("isAlcoholic");
+                    listViewDrinks.Columns.Add("Price");
+                    listViewDrinks.Columns.Add("Vat");
+                    listViewDrinks.Columns.Add("Stock");
+
+                    foreach (Drink s in drinksList)
+                    {
+                        string[] row = { s.DrinkID.ToString(), s.Name, s.IsAlcoholic.ToString(), s.Price.ToString(), s.Vat.ToString(), s.Stock.ToString() };
+                        ListViewItem li = new ListViewItem(row);
+                        listViewDrinks.Items.Add(li);
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
                 }
             }
         }

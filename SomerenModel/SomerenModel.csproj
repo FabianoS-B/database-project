@@ -48,7 +48,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Room.cs" />
-    <Compile Include="Teacher.cs" />
+    <Compile Include="Drinks.cs" />
     <Compile Include="Student.cs" />
   </ItemGroup>
   <ItemGroup>
