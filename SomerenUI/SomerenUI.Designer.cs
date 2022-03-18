@@ -40,6 +40,7 @@
             this.activitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDashboard = new System.Windows.Forms.Panel();
+            this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.pnlStudents = new System.Windows.Forms.Panel();
             this.listViewStudents = new System.Windows.Forms.ListView();
             this.studentID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,27 +48,17 @@
             this.studentDOB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_Students = new System.Windows.Forms.Label();
-            this.pnlLecturers = new System.Windows.Forms.Panel();
-            this.listViewLecturers = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbl_Dashboard = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
             this.pnlStudents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.pnlLecturers.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // imgDashboard
             // 
             this.imgDashboard.Location = new System.Drawing.Point(836, 0);
-            this.imgDashboard.Margin = new System.Windows.Forms.Padding(4);
+            this.imgDashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.imgDashboard.Name = "imgDashboard";
             this.imgDashboard.Size = new System.Drawing.Size(415, 332);
             this.imgDashboard.TabIndex = 0;
@@ -131,7 +122,6 @@
             this.lecturersToolStripMenuItem.Name = "lecturersToolStripMenuItem";
             this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.lecturersToolStripMenuItem.Text = "Lecturers";
-            this.lecturersToolStripMenuItem.Click += new System.EventHandler(this.lecturersToolStripMenuItem_Click);
             // 
             // activitiesToolStripMenuItem
             // 
@@ -147,25 +137,34 @@
             // 
             // pnlDashboard
             // 
-            this.pnlDashboard.Controls.Add(this.pnlStudents);
-            this.pnlDashboard.Controls.Add(this.pnlLecturers);
             this.pnlDashboard.Controls.Add(this.lbl_Dashboard);
             this.pnlDashboard.Controls.Add(this.imgDashboard);
-            this.pnlDashboard.Location = new System.Drawing.Point(19, 44);
-            this.pnlDashboard.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlDashboard.Location = new System.Drawing.Point(16, 33);
+            this.pnlDashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlDashboard.Name = "pnlDashboard";
             this.pnlDashboard.Size = new System.Drawing.Size(1251, 574);
             this.pnlDashboard.TabIndex = 2;
+            // 
+            // lbl_Dashboard
+            // 
+            this.lbl_Dashboard.AutoSize = true;
+            this.lbl_Dashboard.Location = new System.Drawing.Point(17, 16);
+            this.lbl_Dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Dashboard.Name = "lbl_Dashboard";
+            this.lbl_Dashboard.Size = new System.Drawing.Size(243, 17);
+            this.lbl_Dashboard.TabIndex = 1;
+            this.lbl_Dashboard.Text = "Welcome to the Someren Application!";
+            this.lbl_Dashboard.Click += new System.EventHandler(this.label1_Click);
             // 
             // pnlStudents
             // 
             this.pnlStudents.Controls.Add(this.listViewStudents);
             this.pnlStudents.Controls.Add(this.pictureBox1);
             this.pnlStudents.Controls.Add(this.lbl_Students);
-            this.pnlStudents.Location = new System.Drawing.Point(20, 16);
-            this.pnlStudents.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlStudents.Location = new System.Drawing.Point(16, 30);
+            this.pnlStudents.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlStudents.Name = "pnlStudents";
-            this.pnlStudents.Size = new System.Drawing.Size(1212, 549);
+            this.pnlStudents.Size = new System.Drawing.Size(1251, 574);
             this.pnlStudents.TabIndex = 4;
             // 
             // listViewStudents
@@ -175,12 +174,13 @@
             this.studentName,
             this.studentDOB});
             this.listViewStudents.HideSelection = false;
-            this.listViewStudents.Location = new System.Drawing.Point(21, 52);
-            this.listViewStudents.Margin = new System.Windows.Forms.Padding(4);
+            this.listViewStudents.Location = new System.Drawing.Point(20, 64);
+            this.listViewStudents.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listViewStudents.Name = "listViewStudents";
             this.listViewStudents.Size = new System.Drawing.Size(1020, 377);
             this.listViewStudents.TabIndex = 5;
             this.listViewStudents.UseCompatibleStateImageBehavior = false;
+            this.listViewStudents.SelectedIndexChanged += new System.EventHandler(this.listViewStudents_SelectedIndexChanged);
             // 
             // studentID
             // 
@@ -198,8 +198,8 @@
             // 
             this.pictureBox1.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(1073, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(1065, 12);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(173, 151);
             this.pictureBox1.TabIndex = 0;
@@ -216,86 +216,17 @@
             this.lbl_Students.TabIndex = 3;
             this.lbl_Students.Text = "Students";
             // 
-            // pnlLecturers
-            // 
-            this.pnlLecturers.Controls.Add(this.listViewLecturers);
-            this.pnlLecturers.Controls.Add(this.pictureBox2);
-            this.pnlLecturers.Controls.Add(this.label1);
-            this.pnlLecturers.Location = new System.Drawing.Point(20, 16);
-            this.pnlLecturers.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlLecturers.Name = "pnlLecturers";
-            this.pnlLecturers.Size = new System.Drawing.Size(1174, 542);
-            this.pnlLecturers.TabIndex = 5;
-            // 
-            // listViewLecturers
-            // 
-            this.listViewLecturers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.listViewLecturers.HideSelection = false;
-            this.listViewLecturers.Location = new System.Drawing.Point(21, 52);
-            this.listViewLecturers.Margin = new System.Windows.Forms.Padding(4);
-            this.listViewLecturers.Name = "listViewLecturers";
-            this.listViewLecturers.Size = new System.Drawing.Size(1020, 377);
-            this.listViewLecturers.TabIndex = 5;
-            this.listViewLecturers.UseCompatibleStateImageBehavior = false;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "ID";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Name";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Date of Birth";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::SomerenUI.Properties.Resources.someren;
-            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(1073, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(173, 151);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 12);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 33);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Lecturers";
-            // 
-            // lbl_Dashboard
-            // 
-            this.lbl_Dashboard.AutoSize = true;
-            this.lbl_Dashboard.Location = new System.Drawing.Point(17, 16);
-            this.lbl_Dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_Dashboard.Name = "lbl_Dashboard";
-            this.lbl_Dashboard.Size = new System.Drawing.Size(231, 16);
-            this.lbl_Dashboard.TabIndex = 1;
-            this.lbl_Dashboard.Text = "Welcome to the Someren Application!";
-            this.lbl_Dashboard.Click += new System.EventHandler(this.label1_Click);
-            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 622);
+            this.Controls.Add(this.pnlStudents);
             this.Controls.Add(this.pnlDashboard);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SomerenUI";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "SomerenApp";
@@ -308,9 +239,6 @@
             this.pnlStudents.ResumeLayout(false);
             this.pnlStudents.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.pnlLecturers.ResumeLayout(false);
-            this.pnlLecturers.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,13 +265,6 @@
         private System.Windows.Forms.ColumnHeader studentID;
         private System.Windows.Forms.ColumnHeader studentName;
         private System.Windows.Forms.ColumnHeader studentDOB;
-        private System.Windows.Forms.Panel pnlLecturers;
-        private System.Windows.Forms.ListView listViewLecturers;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label1;
     }
 }
 

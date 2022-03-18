@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SomerenModel
 {
     public class Student
-    {
+    { 
         public string Name { get; set; }
         public int StudentID { get; set; } // StudentNumber, e.g. 474791
         public DateTime BirthDate { get; set; }

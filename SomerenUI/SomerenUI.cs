@@ -30,17 +30,17 @@ namespace SomerenUI
             if (panelName == "Dashboard")
             {
                 // hide all other panels
-                pnlLecturers.Hide();
                 pnlStudents.Hide();
-                
+
+                // show dashboard
+                pnlDashboard.Show();
                 imgDashboard.Show();
             }
             else if (panelName == "Students")
             {
                 // hide all other panels
-
-                pnlLecturers.Hide();
-                
+                pnlDashboard.Hide();
+                imgDashboard.Hide();
 
                 // show students
                 pnlStudents.Show();
@@ -50,48 +50,27 @@ namespace SomerenUI
                     // fill the students listview within the students panel with a list of students
                     StudentService studService = new StudentService(); ;
                     List<Student> studentList = studService.GetStudents(); ;
-
+                    
                     // clear the listview before filling it again
                     listViewStudents.Clear();
+                    listViewStudents.View = View.Details;
+                    listViewStudents.FullRowSelect = true;
+                    listViewStudents.Columns.Add("StudentID");
+                    listViewStudents.Columns.Add("Name" );
+                    listViewStudents.Columns.Add("BirthDate");
+                    listViewStudents.Columns.Add("RoomID");
 
                     foreach (Student s in studentList)
                     {
-                        ListViewItem li = new ListViewItem(s.Name);
+                        string[] row = { s.StudentID.ToString(), s.Name ,s.BirthDate.ToShortDateString(),s.RoomID.ToString()};
+                        ListViewItem li = new ListViewItem(row);
                         listViewStudents.Items.Add(li);
+                        
                     }
                 }
                 catch (Exception e)
                 {
                     MessageBox.Show("Something went wrong while loading the students: " + e.Message);
-                }
-            }
-            else if (panelName == "Lecturers")
-            {
-                // hide all other panels
-                pnlStudents.Hide();
-
-
-                // show students
-                pnlLecturers.Show();
-
-                try
-                {
-                    // fill the lecturers listview within the lecturers panel with a list of lecturers
-                    LecturerService lectService = new LecturerService(); ;
-                    List<Lecturer> lecturerList = lectService.GetLecturers(); ;
-
-                    // clear the listview before filling it again
-                    listViewLecturers.Clear();
-
-                    foreach (Lecturer s in lecturerList)
-                    {
-                        ListViewItem li = new ListViewItem(s.Name);
-                        listViewLecturers.Items.Add(li);
-                    }
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Something went wrong while loading the lecturers: " + e.Message);
                 }
             }
         }
@@ -126,9 +105,9 @@ namespace SomerenUI
             showPanel("Students");
         }
 
-        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
         {
-            showPanel("Lecturers");
+
         }
     }
 }

@@ -13,7 +13,7 @@ namespace SomerenDAL
         public BaseDao()
         {
             // DO NOT FORGET TO INSERT YOUR CONNECTION STRING NAMED 'SOMEREN DATABASE' IN YOUR APP.CONFIG!!
-            
+           
                 conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SomerenDatabase"].ConnectionString);
                 adapter = new SqlDataAdapter();
              
@@ -102,7 +102,7 @@ namespace SomerenDAL
             catch (SqlException e)
             {
                 // Print.ErrorLog(e);
-                return null;
+                
                 throw;
             }
             finally
