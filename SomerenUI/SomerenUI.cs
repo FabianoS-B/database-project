@@ -31,7 +31,7 @@ namespace SomerenUI
             {
                 // hide all other panels
                 pnlStudents.Hide();
-
+                pnlCashRegister.Hide();
                 // show dashboard
                 pnlDashboard.Show();
                 imgDashboard.Show();
@@ -41,6 +41,7 @@ namespace SomerenUI
                 // hide all other panels
                 pnlDashboard.Hide();
                 imgDashboard.Hide();
+                
 
                 // show students
                 pnlStudents.Show();
@@ -72,6 +73,18 @@ namespace SomerenUI
                 {
                     MessageBox.Show("Something went wrong while loading the students: " + e.Message);
                 }
+            }
+            
+            
+            
+            else if(panelName == "Cash Register")
+            {
+
+                pnlDashboard.Hide();
+                imgDashboard.Hide();
+
+                pnlCashRegister.Show();
+
             }
         }
 
@@ -108,6 +121,13 @@ namespace SomerenUI
         private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cashRegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            showPanel("Cash Register");
+            
         }
     }
 }
