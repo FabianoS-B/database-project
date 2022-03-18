@@ -80,6 +80,7 @@ namespace SomerenUI
                 // hide all other panels
                 pnlDashboard.Hide();
                 pnlStudents.Hide();
+                pnlDrinks.Hide();
                 // show students
                 pnlLecturers.Show();
 
@@ -143,6 +144,11 @@ namespace SomerenUI
         private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Drinks");
         }
     }
 }
