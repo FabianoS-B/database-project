@@ -57,23 +57,23 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lbl_Lecturers = new System.Windows.Forms.Label();
             this.pnlDrinks = new System.Windows.Forms.Panel();
+            this.buttonModify = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.comboBoxIsAlcoholic = new System.Windows.Forms.ComboBox();
+            this.labelIsAlcoholic = new System.Windows.Forms.Label();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
+            this.labelStockPrice = new System.Windows.Forms.Label();
+            this.textBoxVat = new System.Windows.Forms.TextBox();
+            this.labelVat = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             this.listViewDrinks = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.labelDrinks = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.labelName = new System.Windows.Forms.Label();
-            this.labelVat = new System.Windows.Forms.Label();
-            this.textBoxVat = new System.Windows.Forms.TextBox();
-            this.labelStockPrice = new System.Windows.Forms.Label();
-            this.textBoxPrice = new System.Windows.Forms.TextBox();
-            this.labelIsAlcoholic = new System.Windows.Forms.Label();
-            this.comboBoxIsAlcoholic = new System.Windows.Forms.ComboBox();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
-            this.buttonModify = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -336,6 +336,101 @@
             this.pnlDrinks.Size = new System.Drawing.Size(1251, 574);
             this.pnlDrinks.TabIndex = 6;
             // 
+            // buttonModify
+            // 
+            this.buttonModify.Location = new System.Drawing.Point(185, 487);
+            this.buttonModify.Name = "buttonModify";
+            this.buttonModify.Size = new System.Drawing.Size(105, 29);
+            this.buttonModify.TabIndex = 16;
+            this.buttonModify.Text = "MODIFY";
+            this.buttonModify.UseVisualStyleBackColor = true;
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(185, 427);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(105, 29);
+            this.buttonDelete.TabIndex = 15;
+            this.buttonDelete.Text = "DELETE";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(185, 368);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(105, 29);
+            this.buttonAdd.TabIndex = 14;
+            this.buttonAdd.Text = "ADD";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxIsAlcoholic
+            // 
+            this.comboBoxIsAlcoholic.FormattingEnabled = true;
+            this.comboBoxIsAlcoholic.Items.AddRange(new object[] {
+            "Alcoholic",
+            "Not Alcoholic"});
+            this.comboBoxIsAlcoholic.Location = new System.Drawing.Point(704, 453);
+            this.comboBoxIsAlcoholic.Name = "comboBoxIsAlcoholic";
+            this.comboBoxIsAlcoholic.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxIsAlcoholic.TabIndex = 13;
+            // 
+            // labelIsAlcoholic
+            // 
+            this.labelIsAlcoholic.AutoSize = true;
+            this.labelIsAlcoholic.Location = new System.Drawing.Point(645, 461);
+            this.labelIsAlcoholic.Name = "labelIsAlcoholic";
+            this.labelIsAlcoholic.Size = new System.Drawing.Size(39, 16);
+            this.labelIsAlcoholic.TabIndex = 12;
+            this.labelIsAlcoholic.Text = "Type";
+            // 
+            // textBoxPrice
+            // 
+            this.textBoxPrice.Location = new System.Drawing.Point(704, 394);
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.Size = new System.Drawing.Size(121, 22);
+            this.textBoxPrice.TabIndex = 11;
+            // 
+            // labelStockPrice
+            // 
+            this.labelStockPrice.AutoSize = true;
+            this.labelStockPrice.Location = new System.Drawing.Point(645, 400);
+            this.labelStockPrice.Name = "labelStockPrice";
+            this.labelStockPrice.Size = new System.Drawing.Size(38, 16);
+            this.labelStockPrice.TabIndex = 10;
+            this.labelStockPrice.Text = "Price";
+            // 
+            // textBoxVat
+            // 
+            this.textBoxVat.Location = new System.Drawing.Point(451, 455);
+            this.textBoxVat.Name = "textBoxVat";
+            this.textBoxVat.Size = new System.Drawing.Size(121, 22);
+            this.textBoxVat.TabIndex = 9;
+            // 
+            // labelVat
+            // 
+            this.labelVat.AutoSize = true;
+            this.labelVat.Location = new System.Drawing.Point(382, 459);
+            this.labelVat.Name = "labelVat";
+            this.labelVat.Size = new System.Drawing.Size(27, 16);
+            this.labelVat.TabIndex = 8;
+            this.labelVat.Text = "Vat";
+            // 
+            // labelName
+            // 
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(382, 400);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(44, 16);
+            this.labelName.TabIndex = 7;
+            this.labelName.Text = "Name";
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(451, 394);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(121, 22);
+            this.textBoxName.TabIndex = 6;
+            // 
             // listViewDrinks
             // 
             this.listViewDrinks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -383,101 +478,6 @@
             this.labelDrinks.Size = new System.Drawing.Size(204, 33);
             this.labelDrinks.TabIndex = 3;
             this.labelDrinks.Text = "Drink Supplies";
-            // 
-            // textBoxName
-            // 
-            this.textBoxName.Location = new System.Drawing.Point(451, 394);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(121, 22);
-            this.textBoxName.TabIndex = 6;
-            // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(382, 400);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(44, 16);
-            this.labelName.TabIndex = 7;
-            this.labelName.Text = "Name";
-            // 
-            // labelVat
-            // 
-            this.labelVat.AutoSize = true;
-            this.labelVat.Location = new System.Drawing.Point(382, 459);
-            this.labelVat.Name = "labelVat";
-            this.labelVat.Size = new System.Drawing.Size(27, 16);
-            this.labelVat.TabIndex = 8;
-            this.labelVat.Text = "Vat";
-            // 
-            // textBoxVat
-            // 
-            this.textBoxVat.Location = new System.Drawing.Point(451, 455);
-            this.textBoxVat.Name = "textBoxVat";
-            this.textBoxVat.Size = new System.Drawing.Size(121, 22);
-            this.textBoxVat.TabIndex = 9;
-            // 
-            // labelStockPrice
-            // 
-            this.labelStockPrice.AutoSize = true;
-            this.labelStockPrice.Location = new System.Drawing.Point(645, 400);
-            this.labelStockPrice.Name = "labelStockPrice";
-            this.labelStockPrice.Size = new System.Drawing.Size(38, 16);
-            this.labelStockPrice.TabIndex = 10;
-            this.labelStockPrice.Text = "Price";
-            // 
-            // textBoxPrice
-            // 
-            this.textBoxPrice.Location = new System.Drawing.Point(704, 394);
-            this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(121, 22);
-            this.textBoxPrice.TabIndex = 11;
-            // 
-            // labelIsAlcoholic
-            // 
-            this.labelIsAlcoholic.AutoSize = true;
-            this.labelIsAlcoholic.Location = new System.Drawing.Point(645, 461);
-            this.labelIsAlcoholic.Name = "labelIsAlcoholic";
-            this.labelIsAlcoholic.Size = new System.Drawing.Size(39, 16);
-            this.labelIsAlcoholic.TabIndex = 12;
-            this.labelIsAlcoholic.Text = "Type";
-            // 
-            // comboBoxIsAlcoholic
-            // 
-            this.comboBoxIsAlcoholic.FormattingEnabled = true;
-            this.comboBoxIsAlcoholic.Items.AddRange(new object[] {
-            "Alcoholic",
-            "Not Alcoholic"});
-            this.comboBoxIsAlcoholic.Location = new System.Drawing.Point(704, 453);
-            this.comboBoxIsAlcoholic.Name = "comboBoxIsAlcoholic";
-            this.comboBoxIsAlcoholic.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxIsAlcoholic.TabIndex = 13;
-            // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Location = new System.Drawing.Point(185, 368);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(105, 29);
-            this.buttonAdd.TabIndex = 14;
-            this.buttonAdd.Text = "ADD";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.Location = new System.Drawing.Point(185, 427);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(105, 29);
-            this.buttonDelete.TabIndex = 15;
-            this.buttonDelete.Text = "DELETE";
-            this.buttonDelete.UseVisualStyleBackColor = true;
-            // 
-            // buttonModify
-            // 
-            this.buttonModify.Location = new System.Drawing.Point(185, 487);
-            this.buttonModify.Name = "buttonModify";
-            this.buttonModify.Size = new System.Drawing.Size(105, 29);
-            this.buttonModify.TabIndex = 16;
-            this.buttonModify.Text = "MODIFY";
-            this.buttonModify.UseVisualStyleBackColor = true;
             // 
             // SomerenUI
             // 

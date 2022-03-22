@@ -129,12 +129,14 @@ namespace SomerenUI
                     listViewDrinks.Clear();
                     listViewDrinks.View = View.Details;
                     listViewDrinks.FullRowSelect = true;
-                    listViewDrinks.Columns.Add("DrinkID");
+                    listViewDrinks.Columns.Add("Drink ID");
                     listViewDrinks.Columns.Add("Name");
-                    listViewDrinks.Columns.Add("isAlcoholic");
+                    listViewDrinks.Columns.Add("Is Alcoholic");
                     listViewDrinks.Columns.Add("Price");
-                    listViewDrinks.Columns.Add("Vat");
+                    listViewDrinks.Columns.Add("VAT");
                     listViewDrinks.Columns.Add("Stock");
+                    listViewDrinks.Columns.Add("");
+
 
                     foreach (Drink s in drinksList)
                     {
