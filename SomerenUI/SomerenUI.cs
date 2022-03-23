@@ -135,12 +135,17 @@ namespace SomerenUI
                     listViewDrinks.Columns.Add("Price");
                     listViewDrinks.Columns.Add("VAT");
                     listViewDrinks.Columns.Add("Stock");
-                    listViewDrinks.Columns.Add("");
+                    listViewDrinks.Columns.Add("Sufficient Stock");
 
-
+                    string sufficientStock = "";
                     foreach (Drink s in drinksList)
                     {
-                        string[] row = { s.DrinkID.ToString(), s.Name, s.IsAlcoholic.ToString(), s.Price.ToString(), s.Vat.ToString(), s.Stock.ToString() };
+                        if (s.SufficientStock)
+                            sufficientStock = "Sufficient Stock";
+                        else
+                            sufficientStock = "Insufficient Stock";
+
+                        string[] row = { s.DrinkID.ToString(), s.Name, s.IsAlcoholic.ToString(), s.Price.ToString(), s.Vat.ToString(), s.Stock.ToString(), sufficientStock };
                         ListViewItem li = new ListViewItem(row);
                         listViewDrinks.Items.Add(li);
                     }

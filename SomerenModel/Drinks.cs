@@ -15,6 +15,20 @@ namespace SomerenModel
         public double Vat { get; set; }
         public int Stock { get; set; }
 
+        private bool sufficientStock;
+
+        public bool SufficientStock
+        {
+            get 
+            {
+                if (Stock >= 10)
+                    return true;
+                else
+                    return false;
+            }
+ 
+        }
+
         //public int Room { get; set; }
     }
 }

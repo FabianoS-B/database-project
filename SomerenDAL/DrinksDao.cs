@@ -39,5 +39,21 @@ namespace SomerenDAL
             }
             return drinks;
         }
+
+        // INSERT
+        private void InsertDrink()
+        {
+
+        }
+
+        private void UpdateDrink()
+        {
+
+        }
+
+        private void DeleteDrink()
+        {
+
+        }
     }
 }
