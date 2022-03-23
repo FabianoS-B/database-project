@@ -28,7 +28,5 @@ namespace SomerenModel
             }
  
         }
-
-        //public int Room { get; set; }
     }
 }

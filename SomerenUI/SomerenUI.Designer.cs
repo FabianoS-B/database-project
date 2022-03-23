@@ -342,7 +342,7 @@
             this.buttonModify.Name = "buttonModify";
             this.buttonModify.Size = new System.Drawing.Size(105, 29);
             this.buttonModify.TabIndex = 16;
-            this.buttonModify.Text = "MODIFY";
+            this.buttonModify.Text = "SAVE";
             this.buttonModify.UseVisualStyleBackColor = true;
             // 
             // buttonDelete
@@ -360,8 +360,9 @@
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(105, 29);
             this.buttonAdd.TabIndex = 14;
-            this.buttonAdd.Text = "ADD";
+            this.buttonAdd.Text = "NEW";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // comboBoxIsAlcoholic
             // 

@@ -137,13 +137,21 @@ namespace SomerenUI
                     listViewDrinks.Columns.Add("Stock");
                     listViewDrinks.Columns.Add("Sufficient Stock");
 
+                    //columns appearance
+                    for (int i = 0; i < listViewDrinks.Columns.Count; i++)
+                    {
+                        listViewDrinks.Columns[i].Width = 80;
+                        listViewDrinks.Columns[i].TextAlign = HorizontalAlignment.Center;
+                    }
+                    listViewDrinks.Columns[6].Width = 130;
+
                     string sufficientStock = "";
                     foreach (Drink s in drinksList)
                     {
                         if (s.SufficientStock)
-                            sufficientStock = "Sufficient Stock";
+                            sufficientStock = "Stock sufficient";
                         else
-                            sufficientStock = "Insufficient Stock";
+                            sufficientStock = "Stock nearly depleted";
 
                         string[] row = { s.DrinkID.ToString(), s.Name, s.IsAlcoholic.ToString(), s.Price.ToString(), s.Vat.ToString(), s.Stock.ToString(), sufficientStock };
                         ListViewItem li = new ListViewItem(row);
@@ -200,6 +208,12 @@ namespace SomerenUI
         private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Drinks");
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            if (listViewDrinks.FullRowSelect)
+                textBoxName.Text = "beer";
         }
     }
 }
