@@ -128,7 +128,7 @@ namespace SomerenUI
                     // clear the listview before filling it again
                     listViewDrinks.Clear();
                     listViewDrinks.View = View.Details;
-                    listViewDrinks.FullRowSelect = true;
+                    listViewDrinks.MultiSelect = false;
                     listViewDrinks.Columns.Add("Drink ID");
                     listViewDrinks.Columns.Add("Name");
                     listViewDrinks.Columns.Add("Is Alcoholic");
@@ -212,8 +212,59 @@ namespace SomerenUI
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (listViewDrinks.FullRowSelect)
-                textBoxName.Text = "beer";
+           DrinksService drinks = new DrinksService();
+           drinks.InsertDrink(CreateDrink());
+           MessageBox.Show("Drink Added Succesfully!");
+            
+        }
+
+        //create a drink object based on user input
+        private Drink CreateDrink()
+        {
+            return new Drink()
+            {
+                Name = textBoxName.Text,
+                Price = double.Parse(textBoxPrice.Text),
+                Vat = double.Parse(textBoxVat.Text),
+                Stock = int.Parse(textBoxStock.Text),
+                IsAlcoholic = IsAlc()
+            };
+        }
+
+        private bool IsAlc()
+        {
+            try
+            {
+                if (comboBoxIsAlcoholic.Text == "Alcoholic")
+                {
+                    return true;
+                }
+                else if (comboBoxIsAlcoholic.Text == "Not Alcoholic")
+            {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+            }
+            
+        }
+
+
+        private void listViewDrinks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                textBoxName.Text = listViewDrinks.SelectedItems[0].SubItems[1].Text;
+                textBoxPrice.Text = listViewDrinks.SelectedItems[0].SubItems[3].Text;
+                textBoxVat.Text = listViewDrinks.SelectedItems[0].SubItems[4].Text;
+                comboBoxIsAlcoholic.Text = listViewDrinks.SelectedItems[0].SubItems[2].Text;
+                textBoxStock.Text = listViewDrinks.SelectedItems[0].SubItems[5].Text;
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

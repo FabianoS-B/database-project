@@ -34,5 +34,7 @@ namespace SomerenLogic
         {
 
         }
+
+        public void InsertDrink(Drink drink) => drinksdb.InsertDrink(drink);
     }
 }
