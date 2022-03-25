@@ -40,22 +40,28 @@ namespace SomerenDAL
             return drinks;
         }
 
-        // INSERT
-        public void InsertDrink(Drink drink)
+        //Add drink
+        public void AddDrink(Drink drink)
         {
             string query = "INSERT INTO drink VALUES(@name, @IsAlcoholic, @price, @vat, @stock)";
             SqlParameter[] sqlParameters = { new SqlParameter("@name", drink.Name),  new SqlParameter("@IsAlcoholic", drink.IsAlcoholic), new SqlParameter("@price", drink.Price), new SqlParameter("@vat", drink.Vat), new SqlParameter("@stock", drink.Stock) };
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        private void UpdateDrink()
+        //Delete drink
+        public void DeleteDrink(Drink drink)
         {
-
+            string query = "DELETE FROM drink WHERE [name]=@name";
+            SqlParameter[] sqlParameters = { new SqlParameter("@name", drink.Name), new SqlParameter("@IsAlcoholic", drink.IsAlcoholic), new SqlParameter("@price", drink.Price), new SqlParameter("@vat", drink.Vat), new SqlParameter("@stock", drink.Stock) };
+            ExecuteEditQuery(query, sqlParameters);
         }
 
-        private void DeleteDrink()
+        //Modify drink
+        public void ModifyDrink(Drink drink)
         {
-
+            string query = "UPDATE drink SET [name]=@name, isAlcoholic=@IsAlcoholic, price=@price, vat=@vat, stock=@stock WHERE drinkID=@DrinkID";
+            SqlParameter[] sqlParameters = { new SqlParameter("drinkID", drink.DrinkID), new SqlParameter("@name", drink.Name), new SqlParameter("@IsAlcoholic", drink.IsAlcoholic), new SqlParameter("@price", drink.Price), new SqlParameter("@vat", drink.Vat), new SqlParameter("@stock", drink.Stock) };
+            ExecuteEditQuery(query, sqlParameters);
         }
     }
 }

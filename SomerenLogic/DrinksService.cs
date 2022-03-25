@@ -24,17 +24,22 @@ namespace SomerenLogic
             return drinks;
         }
 
-        // crear y modificar
-        public void SaveDrink(Drink drink)
-        {
-
-        }
-
+        //Delete drink
         public void DeleteDrink(Drink drink)
         {
-
+            drinksdb.DeleteDrink(drink);
+        }
+        
+        //Add drink
+        public void AddDrink(Drink drink)
+        {
+            drinksdb.AddDrink(drink);
         }
 
-        public void InsertDrink(Drink drink) => drinksdb.InsertDrink(drink);
+        //Modify drink
+        public void ModifyDrink(Drink drink)
+        {
+            drinksdb.ModifyDrink(drink);
+        }
     }
 }

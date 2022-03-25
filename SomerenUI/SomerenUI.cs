@@ -128,7 +128,7 @@ namespace SomerenUI
                     // clear the listview before filling it again
                     listViewDrinks.Clear();
                     listViewDrinks.View = View.Details;
-                    listViewDrinks.MultiSelect = false;
+                    listViewDrinks.FullRowSelect = true;
                     listViewDrinks.Columns.Add("Drink ID");
                     listViewDrinks.Columns.Add("Name");
                     listViewDrinks.Columns.Add("Is Alcoholic");
@@ -209,45 +209,26 @@ namespace SomerenUI
         {
             showPanel("Drinks");
         }
-
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-           DrinksService drinks = new DrinksService();
-           drinks.InsertDrink(CreateDrink());
-           MessageBox.Show("Drink Added Succesfully!");
-            
-        }
+              
 
         //create a drink object based on user input
         private Drink CreateDrink()
         {
-            return new Drink()
-            {
-                Name = textBoxName.Text,
-                Price = double.Parse(textBoxPrice.Text),
-                Vat = double.Parse(textBoxVat.Text),
-                Stock = int.Parse(textBoxStock.Text),
-                IsAlcoholic = IsAlc()
-            };
+            Drink drink = new Drink();
+            drink.Name = textBoxName.Text;
+            drink.Price = double.Parse(textBoxPrice.Text);
+            drink.Vat = double.Parse(textBoxVat.Text);
+            drink.Stock = int.Parse(textBoxStock.Text);
+            drink.IsAlcoholic = IsAlc();
+            return drink;
         }
 
         private bool IsAlc()
         {
-            try
-            {
-                if (comboBoxIsAlcoholic.Text == "Alcoholic")
-                {
-                    return true;
-                }
-                else if (comboBoxIsAlcoholic.Text == "Not Alcoholic")
-            {
-                    return false;
-                }
-            }
-            catch (Exception)
-            {
-            }
-            
+            if (comboBoxIsAlcoholic.Text == "Alcoholic")
+                return true;
+            else
+                return false;
         }
 
 
@@ -258,13 +239,56 @@ namespace SomerenUI
             {
                 textBoxName.Text = listViewDrinks.SelectedItems[0].SubItems[1].Text;
                 textBoxPrice.Text = listViewDrinks.SelectedItems[0].SubItems[3].Text;
-                textBoxVat.Text = listViewDrinks.SelectedItems[0].SubItems[4].Text;
-                comboBoxIsAlcoholic.Text = listViewDrinks.SelectedItems[0].SubItems[2].Text;
+                textBoxVat.Text = listViewDrinks.SelectedItems[0].SubItems[4].Text;                
+                if (listViewDrinks.SelectedItems[0].SubItems[2].Text == "True" )
+                    comboBoxIsAlcoholic.Text = "Alcoholic";
+                else if(listViewDrinks.SelectedItems[0].SubItems[2].Text == "False")
+                    comboBoxIsAlcoholic.Text = "Not Alcoholic";
                 textBoxStock.Text = listViewDrinks.SelectedItems[0].SubItems[5].Text;
             }
             catch (Exception)
             {
             }
+        }
+
+        //Create new drink
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            DrinksService drinks = new DrinksService();
+            drinks.AddDrink(CreateDrink());
+            showPanel("Drinks");
+            MessageBox.Show("Drink Added Succesfully!");
+        }
+
+        //Delete a drink
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            DrinksService drinks = new DrinksService();
+            drinks.DeleteDrink(CreateDrink());
+            showPanel("Drinks");
+            MessageBox.Show("Drink Deleted Succesfully!");
+        }
+
+        //Modify an existing drink
+        private void buttonModify_Click(object sender, EventArgs e)
+        {
+            DrinksService drinks = new DrinksService();
+            int drinkID = Convert.ToInt32(listViewDrinks.SelectedItems[0].SubItems[0].Text);
+            Drink drink = CreateDrink();
+            drink.DrinkID = drinkID;
+            drinks.ModifyDrink(drink);
+            showPanel("Drinks");
+            MessageBox.Show("Drink Modified Succesfully");
+        }
+
+        //Clear all the text
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            textBoxName.Text = "";
+            textBoxPrice.Text = "";
+            textBoxVat.Text = "";
+            comboBoxIsAlcoholic.Text = "Not Alcoholic";
+            textBoxStock.Text = "";
         }
     }
 }

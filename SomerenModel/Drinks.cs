@@ -9,7 +9,7 @@ namespace SomerenModel
     public class Drink
     { 
         public string Name { get; set; }
-        public int DrinkID { get; set; } // StudentNumber, e.g. 474791
+        public int DrinkID { get; set; }
         public bool IsAlcoholic { get; set; }
         public double Price { get; set; }
         public double Vat { get; set; }
