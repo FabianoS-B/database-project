@@ -33,6 +33,7 @@ namespace SomerenUI
                 pnlStudents.Hide();
                 pnlLecturers.Hide();
                 pnlDrinks.Hide();
+                pnlActivities.Hide();
 
                 // show dashboard
                 pnlDashboard.Show();
@@ -44,6 +45,7 @@ namespace SomerenUI
                 pnlDashboard.Hide();
                 imgDashboard.Hide();
                 pnlLecturers.Hide();
+                pnlActivities.Hide();
 
                 // show students
                 pnlStudents.Show();
@@ -81,6 +83,8 @@ namespace SomerenUI
                 pnlDashboard.Hide();
                 pnlStudents.Hide();
                 pnlDrinks.Hide();
+                pnlActivities.Hide();
+
                 // show students
                 pnlLecturers.Show();
 
@@ -116,6 +120,8 @@ namespace SomerenUI
                 pnlDashboard.Hide();
                 pnlStudents.Hide();
                 pnlLecturers.Hide();
+                pnlActivities.Hide();
+
                 // show students
                 pnlDrinks.Show();
 
@@ -163,6 +169,51 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
                 }
             }
+            else if (panelName == "Activities")
+            {
+                // hide all other panels
+                pnlDashboard.Hide();
+                pnlStudents.Hide();
+                pnlLecturers.Hide();
+                pnlDrinks.Hide();
+                // show activites
+                pnlActivities.Show();
+
+                try
+                {
+                    // fill the lecturers listview within the lecturers panel with a list of lecturers
+                    ActivitiesService activityService = new ActivitiesService(); ;
+                    List<Activity> activitiesList = activityService.GetActivities(); ;
+
+                    // clear the listview before filling it again
+                    listViewActivities.Clear();
+                    listViewActivities.View = View.Details;
+                    listViewActivities.FullRowSelect = true;
+                    listViewActivities.Columns.Add("Activity ID");
+                    listViewActivities.Columns.Add("Name");
+                    listViewActivities.Columns.Add("Date");
+                    listViewActivities.Columns.Add("Start Time");
+                    listViewActivities.Columns.Add("End Time");
+                    
+                    //columns appearance
+                    for (int i = 0; i < listViewActivities.Columns.Count; i++)
+                    {
+                        listViewActivities.Columns[i].Width = 80;
+                        listViewActivities.Columns[i].TextAlign = HorizontalAlignment.Center;
+                    }
+                    
+                    foreach (Activity s in activitiesList)
+                    {
+                        string[] row = { s.ActivityID.ToString(), s.Name, s.Date.ToString(), s.StartTime.ToString(), s.EndTime.ToString() };
+                        ListViewItem li = new ListViewItem(row);
+                        listViewActivities.Items.Add(li);
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the activities: " + e.Message);
+                }
+            }
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -200,6 +251,10 @@ namespace SomerenUI
             showPanel("Lecturers");
         }
 
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Activities");
+        }
         private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
         {
 
