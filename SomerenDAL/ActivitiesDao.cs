@@ -48,7 +48,7 @@ namespace SomerenDAL
         }
 
         //Delete activity
-        public void DeleteDrink(Activity activity)
+        public void DeleteActivity(Activity activity)
         {
             string query = "DELETE FROM activity WHERE [name]=@name";
             SqlParameter[] sqlParameters = { new SqlParameter("@name", activity.Name), new SqlParameter("@date", activity.Date), new SqlParameter("@startTime", activity.StartTime), new SqlParameter("@endTime", activity.EndTime) };
@@ -56,7 +56,7 @@ namespace SomerenDAL
         }
 
         //Modify activity
-        public void ModifyDrink(Activity activity)
+        public void ModifyActivity(Activity activity)
         {
             string query = "UPDATE activity SET [name]=@name, date=@date, startTime=@startTime, endTime=@endTime WHERE activityID=@activityID";
             SqlParameter[] sqlParameters = { new SqlParameter("activityID", activity.ActivityID), new SqlParameter("@name", activity.Name), new SqlParameter("@date", activity.Date), new SqlParameter("@startTime", activity.StartTime), new SqlParameter("@endTime", activity.EndTime) };

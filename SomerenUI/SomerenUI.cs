@@ -204,7 +204,7 @@ namespace SomerenUI
                     
                     foreach (Activity s in activitiesList)
                     {
-                        string[] row = { s.ActivityID.ToString(), s.Name, s.Date.ToString(), s.StartTime.ToString(), s.EndTime.ToString() };
+                        string[] row = { s.ActivityID.ToString(), s.Name.ToString(), s.Date.ToString("d"), s.StartTime.ToString("t"), s.EndTime.ToString("t") };
                         ListViewItem li = new ListViewItem(row);
                         listViewActivities.Items.Add(li);
                     }
@@ -264,9 +264,9 @@ namespace SomerenUI
         {
             showPanel("Drinks");
         }
-              
 
-        //create a drink object based on user input
+        #region DRINKS
+        //Create a drink object based on user input
         private Drink CreateDrink()
         {
             Drink drink = new Drink();
@@ -286,10 +286,8 @@ namespace SomerenUI
                 return false;
         }
 
-
         private void listViewDrinks_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
+        {            
             try
             {
                 textBoxName.Text = listViewDrinks.SelectedItems[0].SubItems[1].Text;
@@ -306,7 +304,7 @@ namespace SomerenUI
             }
         }
 
-        //Create new drink
+        //Add a drink
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             DrinksService drinks = new DrinksService();
@@ -324,7 +322,7 @@ namespace SomerenUI
             MessageBox.Show("Drink Deleted Succesfully!");
         }
 
-        //Modify an existing drink
+        //Modify an drink
         private void buttonModify_Click(object sender, EventArgs e)
         {
             DrinksService drinks = new DrinksService();
@@ -339,11 +337,80 @@ namespace SomerenUI
         //Clear all the text
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            textBoxName.Text = "";
-            textBoxPrice.Text = "";
-            textBoxVat.Text = "";
+            textBoxName.Clear();
+            textBoxPrice.Clear();
+            textBoxVat.Clear();
             comboBoxIsAlcoholic.Text = "Not Alcoholic";
-            textBoxStock.Text = "";
+            textBoxStock.Clear();
         }
+        #endregion
+
+        #region ACTIVITIES
+
+        private void listViewActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                textBoxNameActivity.Text = listViewActivities.SelectedItems[0].SubItems[1].Text;
+                dateTimePickerDateActivity.Text = listViewActivities.SelectedItems[0].SubItems[2].Text;
+                dateTimePickerStartTimeActivity.Text = listViewActivities.SelectedItems[0].SubItems[3].Text;
+                dateTimePickerEndTimeActivity.Text = listViewActivities.SelectedItems[0].SubItems[4].Text;
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        //Create an activity based on user input
+        private Activity CreateActivity()
+        {
+            Activity activity = new Activity();
+            activity.Name = textBoxNameActivity.Text;
+            activity.Date = dateTimePickerDateActivity.Value;
+            activity.StartTime = dateTimePickerStartTimeActivity.Value;
+            activity.EndTime = dateTimePickerEndTimeActivity.Value;
+            return activity;
+        }
+
+        //Add an activity
+        private void buttonAddActivity_Click(object sender, EventArgs e)
+        {
+            ActivitiesService activities = new ActivitiesService();
+            activities.AddActivity(CreateActivity());
+            showPanel("Activities");
+            MessageBox.Show("Activity Added Succesfully!1");
+        }
+
+        //Delete an activity
+        private void buttonDeleteActivity_Click(object sender, EventArgs e)
+        {            
+            if (MessageBox.Show("Are you sure you wish to remove this activity?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                ActivitiesService activities = new ActivitiesService();
+                activities.DeleteActivity(CreateActivity());
+                showPanel("Activities");
+                MessageBox.Show("Activity Deleted Succesfully!");
+            }
+        }
+
+        //Modify an activity
+        private void buttonModifyActivity_Click(object sender, EventArgs e)
+        {
+            ActivitiesService activities = new ActivitiesService();
+            int activityID = Convert.ToInt32(listViewActivities.SelectedItems[0].SubItems[0].Text);
+            Activity activity = CreateActivity();
+            activity.ActivityID = activityID;
+            activities.ModifyActivity(activity);
+            showPanel("Activities");
+            MessageBox.Show("Activity Modified Succesfully");
+        }
+
+        //CLear all the text
+        private void buttonClearAllActivities_Click(object sender, EventArgs e)
+        {
+            textBoxNameActivity.Clear();
+        }
+
+        #endregion
     }
 }
