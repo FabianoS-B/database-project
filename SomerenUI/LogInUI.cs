@@ -21,20 +21,32 @@ namespace SomerenUI
             InitializeComponent();
         }
 
-        //Create a user based on user input
-        private User CreateUser()
-        {
-            PasswordWithSaltHasher hasher = new PasswordWithSaltHasher();
-            User user = new User();
-            user.Username = textBoxUsername.Text;
-            user.Password = hasher.HashWithSalt(textBoxPassword.Text, 64, SHA256.Create()).ToString();
-            return user;
-        }
-
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
-            UserService users = new UserService();
-            User user = CreateUser();
+            UserService userService = new UserService();
+            List<User> userList = userService.GetUsers();
+            int index = userList.FindIndex(user => user.Username == textBoxUsername.Text);
+            if (index >= 0)
+            {
+                PasswordWithSaltHasher pwHasher = new PasswordWithSaltHasher();
+
+                if (pwHasher.HashWithUserSalt(textBoxPassword.Text, userList[index].Password, userList[index].Salt, SHA512.Create()))
+                {
+                    MessageBox.Show("Login successful");
+                    this.Hide();
+                    SomerenUI somerenUI = new SomerenUI();
+                    somerenUI.Show();
+                   
+
+                } else
+                {
+                    MessageBox.Show("Incorrect password.");
+                }
+            } else
+            {
+                MessageBox.Show("User does not exist");
+            }
+
         }
     }
 

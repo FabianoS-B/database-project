@@ -14,7 +14,7 @@ namespace SomerenDAL
     {      
         public List<User> GetAllUsers()
         {
-            string query = "SELECT userID, name, role, username, password FROM user";
+            string query = "SELECT userID, name, username, password, salt, securityQuestion, securityAnswer FROM [user]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -29,9 +29,11 @@ namespace SomerenDAL
                 {
                     UserID = (int)dr["userID"],
                     Name = (string)dr["name"],
-                    Role = (string)dr["role"],
                     Username = (string)dr["username"],
-                    Password = (string)dr["password"]
+                    Password = (string)dr["password"],
+                    Salt = (string)dr["salt"],
+                    SecurityQuestion = (string)dr["securityQuestion"],
+                    SecurityAnswer = (string)dr["securityAnswer"],
                 };
                 users.Add(user);
             }
