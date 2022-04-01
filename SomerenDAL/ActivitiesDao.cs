@@ -7,7 +7,6 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Collections.ObjectModel;
 using SomerenModel;
-using System.Windows.Forms;
 
 namespace SomerenDAL
 {
