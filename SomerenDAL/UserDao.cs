@@ -36,6 +36,6 @@ namespace SomerenDAL
                 users.Add(user);
             }
             return users;
-        }               
+        }
     }
 }
