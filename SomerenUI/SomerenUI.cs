@@ -286,6 +286,7 @@ namespace SomerenUI
                 return false;
         }
 
+        //Select a row
         private void listViewDrinks_SelectedIndexChanged(object sender, EventArgs e)
         {            
             try
@@ -347,6 +348,7 @@ namespace SomerenUI
 
         #region ACTIVITIES
 
+        //Select a row
         private void listViewActivities_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
