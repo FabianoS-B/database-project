@@ -291,17 +291,21 @@ namespace SomerenUI
         {            
             try
             {
-                textBoxName.Text = listViewDrinks.SelectedItems[0].SubItems[1].Text;
-                textBoxPrice.Text = listViewDrinks.SelectedItems[0].SubItems[3].Text;
-                textBoxVat.Text = listViewDrinks.SelectedItems[0].SubItems[4].Text;                
-                if (listViewDrinks.SelectedItems[0].SubItems[2].Text == "True" )
-                    comboBoxIsAlcoholic.Text = "Alcoholic";
-                else if(listViewDrinks.SelectedItems[0].SubItems[2].Text == "False")
-                    comboBoxIsAlcoholic.Text = "Not Alcoholic";
-                textBoxStock.Text = listViewDrinks.SelectedItems[0].SubItems[5].Text;
+                if (listViewDrinks.SelectedItems.Count != 0)
+                {
+                    textBoxName.Text = listViewDrinks.SelectedItems[0].SubItems[1].Text;
+                    textBoxPrice.Text = listViewDrinks.SelectedItems[0].SubItems[3].Text;
+                    textBoxVat.Text = listViewDrinks.SelectedItems[0].SubItems[4].Text;
+                    if (listViewDrinks.SelectedItems[0].SubItems[2].Text == "True")
+                        comboBoxIsAlcoholic.Text = "Alcoholic";
+                    else if (listViewDrinks.SelectedItems[0].SubItems[2].Text == "False")
+                        comboBoxIsAlcoholic.Text = "Not Alcoholic";
+                    textBoxStock.Text = listViewDrinks.SelectedItems[0].SubItems[5].Text;
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                throw ex;
             }
         }
 
@@ -353,13 +357,18 @@ namespace SomerenUI
         {
             try
             {
-                textBoxNameActivity.Text = listViewActivities.SelectedItems[0].SubItems[1].Text;
-                dateTimePickerDateActivity.Text = listViewActivities.SelectedItems[0].SubItems[2].Text;
-                dateTimePickerStartTimeActivity.Text = listViewActivities.SelectedItems[0].SubItems[3].Text;
-                dateTimePickerEndTimeActivity.Text = listViewActivities.SelectedItems[0].SubItems[4].Text;
+                if (listViewActivities.SelectedItems.Count != 0)
+                {
+                    textBoxNameActivity.Text = listViewActivities.SelectedItems[0].SubItems[1].Text;
+                    dateTimePickerDateActivity.Text = listViewActivities.SelectedItems[0].SubItems[2].Text;
+                    dateTimePickerStartTimeActivity.Text = listViewActivities.SelectedItems[0].SubItems[3].Text;
+                    dateTimePickerEndTimeActivity.Text = listViewActivities.SelectedItems[0].SubItems[4].Text;
+                }
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                throw ex;
             }
         }
 
